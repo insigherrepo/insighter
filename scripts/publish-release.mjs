@@ -33,6 +33,20 @@ function normalizeRepoSlug(raw) {
     .replace(/^\/+|\/+$/g, '');
 }
 
+function getReleaseNotes(version) {
+  const changelogPath = path.join(rootDir, 'CHANGELOG.md');
+  if (!fs.existsSync(changelogPath)) {
+    return `Atualização automática do Insighter (v${version}) para macOS Apple Silicon.`;
+  }
+  const content = fs.readFileSync(changelogPath, 'utf8');
+  const regex = new RegExp(`##\\s*\\[${version}\\][^\n]*\\n([\\s\\S]*?)(?=\\n##\\s*\\[|$)`, 'i');
+  const match = content.match(regex);
+  if (match && match[1].trim()) {
+    return match[1].trim();
+  }
+  return `Atualização automática do Insighter (v${version}) para macOS Apple Silicon.`;
+}
+
 async function main() {
   const envDocker = parseEnvFile(path.join(rootDir, '.env.docker'));
   const pkg = JSON.parse(fs.readFileSync(path.join(rootDir, 'package.json'), 'utf8'));
@@ -94,10 +108,20 @@ async function main() {
     );
   }
 
+  const releaseNotes = getReleaseNotes(version);
+
   // Publica ou atualiza a Release no GitHub
   console.log(`☁️ Publicando release ${tag} em ${repoSlug}...`);
   try {
     execFileSync('gh', ['release', 'view', tag, '--repo', repoSlug], { env: envWithToken, stdio: 'ignore' });
+    execFileSync(
+      'gh',
+      ['release', 'edit', tag, '--repo', repoSlug, '--title', `Insighter ${tag}`, '--notes', releaseNotes],
+      {
+        env: envWithToken,
+        stdio: 'inherit',
+      }
+    );
     execFileSync('gh', ['release', 'upload', tag, zipPath, '--clobber', '--repo', repoSlug], {
       env: envWithToken,
       stdio: 'inherit',
@@ -115,7 +139,7 @@ async function main() {
         '--title',
         `Insighter ${tag}`,
         '--notes',
-        `Atualização automática do Insighter (${tag}) para macOS Apple Silicon.`,
+        releaseNotes,
       ],
       { env: envWithToken, stdio: 'inherit' }
     );

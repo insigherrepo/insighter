@@ -1,0 +1,58 @@
+{
+  "name": "insighter",
+  "private": true,
+  "version": "0.1.1",
+  "description": "Insighter — Brainstormer espacial livre e Sala de Roteiristas com Gemini API (estilo NotebookLM)",
+  "type": "module",
+  "main": "electron/main.cjs",
+  "scripts": {
+    "dev": "vite --port 5173",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "desktop": "ELECTRON_USE_DEV=true electron .",
+    "desktop:prod": "npm run build && electron .",
+    "desktop:dist": "npm run build && CSC_IDENTITY_AUTO_DISCOVERY=false electron-builder --mac --dir",
+    "desktop:pack": "npm run desktop:dist && mkdir -p /Applications/Capitolio && rm -rf /Applications/Capitolio/Insighter.app && cp -R dist/mac-arm64/Insighter.app /Applications/Capitolio/Insighter.app && touch /Applications/Capitolio/Insighter.app",
+    "release:github": "node scripts/publish-release.mjs"
+  },
+  "build": {
+    "appId": "com.insighter.studio",
+    "productName": "Insighter",
+    "files": [
+      "dist/**/*",
+      "electron/**/*",
+      "build/icon.png",
+      "build/icon.icns",
+      "build/tray-icon.png",
+      "build/tray-icon@2x.png",
+      "build/update-config.json",
+      "package.json"
+    ],
+    "mac": {
+      "category": "public.app-category.productivity",
+      "icon": "build/icon.icns",
+      "target": "dir"
+    }
+  },
+  "dependencies": {
+    "@google/genai": "^1.0.0",
+    "@supabase/supabase-js": "^2.49.1",
+    "lucide-react": "^1.16.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "zustand": "^5.0.3"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@vitejs/plugin-react": "^4.3.4",
+    "electron": "^45.0.0",
+    "electron-builder": "^26.8.1",
+    "jsdom": "^26.0.0",
+    "typescript": "~5.7.2",
+    "vite": "^6.2.0",
+    "vitest": "^3.0.7"
+  }
+}

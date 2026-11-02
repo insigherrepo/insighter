@@ -1,0 +1,30 @@
+# Dependências e Build
+node_modules/
+dist/
+dist-ssr/
+*.local
+*.tsbuildinfo
+
+# Variáveis de Ambiente e Segredos (Docker / Supabase / Gemini)
+.env
+.env.docker
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Manter template versionado no GitHub
+!.env.example
+
+# Dados locais de containers Docker
+postgres-data/
+insighter_pgdata/
+
+# Desktop / Tauri / macOS
+src-tauri/target/
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

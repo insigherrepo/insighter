@@ -4,6 +4,22 @@ Todas as notas de atualização, correções e novidades de cada versão do Insi
 
 ---
 
+## [0.1.5] - 2026-11-03
+
+### 🎓 Novo Formato: Aula / Masterclass Didática
+- **Formato dedicado para instrutores e criadores de conteúdo**: Adicionada a opção `🎓 Aula / Masterclass` no Studio Dashboard com formulário de contexto pedagógico estruturado.
+- **Configuração pedagógica customizada**: Definição de nível de proficiência (*Iniciante*, *Intermediário*, *Avançado*), formato didático (*Masterclass Intensiva / Deep Dive*, *Workshop Prático Mão na Massa*, *Módulo de Trilha*), público-alvo específico e objetivo central de aprendizagem.
+- **Jornada de Ensino Ativo no Canvas**: Geração automática de 5 blocos pedagógicos interconectados por fios de síntese narrativa:
+  1. `🎯 01. Gancho de Abertura & Problema Real` (A dor concreta e a promessa transformadora)
+  2. `🧠 02. Princípio Raiz & Modelo Mental` (Fundamentação teórica desmistificada sem jargões)
+  3. `🔬 03. Demonstração Prática & Estudo de Caso` (Aplicação passo a passo no mundo real)
+  4. `⚠️ 04. Armadilhas Comuns & Ponto Cego` (Os 3 erros clássicos e como se blindar)
+  5. `⚡ 05. Exercício Prático & Plano de Ação` (Desafio imediato de fixação e checklist)
+- **Fonte Ativa de Diretrizes Pedagógicas**: O briefing pedagógico preenchido é compilado automaticamente como Fonte Ativa no Context Mixer, servindo de guia para o Gemini nas lentes criativas.
+- **Escaleta Didática no ScriptBeatView**: Visualização com badges e cabeçalho didático (`01 · GANCHO & PROBLEMA REAL`, `02 · FUNDAMENTAÇÃO`, etc.) e estimativas dinâmicas de tempo por etapa.
+
+---
+
 ## [0.1.4] - 2026-11-02
 
 ### 📐 Layout & Correção de Sobreposição no Canvas

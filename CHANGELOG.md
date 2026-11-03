@@ -4,6 +4,31 @@ Todas as notas de atualização, correções e novidades de cada versão do Insi
 
 ---
 
+## [0.1.6] - 2026-11-03
+
+### 📐 Eliminação Definitiva da Sobreposição de Barras no Topo
+- **Container Vertical Empilhado (`.canvas-top-floating-stack`)**: As barras de status do Modo Investigativo e de seleção de cards (Ultrafoco, Conectar, Destilar) agora convivem em fluxo vertical flexível com espaçamento automático de 10px, garantindo que nunca ocupem a mesma coordenada ou sobreponham textos e botões.
+- **Posicionamento Relativo sem Colisão**: Removidos posicionamentos absolutos conflitantes de elementos de feedback do Canvas (Modo Investigativo, Barra de Destilação, Banner de Conexão e Reunião Ao Vivo).
+
+### ↩️ Desfazer (Undo) e Refazer (Redo) no Canvas
+- **Recuperação de Ações Acidentais**: Desconexões de fios narrativos, remoção de cards, alterações de cor e agrupamentos agora podem ser desfeitos e refeitos instantaneamente.
+- **Atalhos e Controles no HUD**: Suporte nativo aos atalhos `Cmd+Z` / `Ctrl+Z` (Desfazer), `Cmd+Shift+Z` / `Ctrl+Shift+Z` / `Cmd+Y` (Refazer), além de botões dedicados no HUD superior direito do Canvas.
+- **Histórico Profundo e Isolado**: Pilha de até 40 estados que restaura com precisão cirúrgica a integridade das conexões e cards sem afetar o restante do projeto.
+
+### 🎓 Aula / Masterclass: Contexto Prévio & Cards Limpos
+- **Carregamento de Arquivo de Contexto Pré-Inicialização**: Permite anexar um arquivo de base (PDF, Markdown, Anotações) diretamente na criação da aula, inserindo-o automaticamente como Fonte Ativa no Context Mixer.
+- **Cards com Foco Limpo**: Os 5 blocos da jornada didática iniciam com corpo limpo (`body: ''`), eliminando textos genéricos e permitindo que o instrutor desenvolva seu conteúdo sem precisar apagar preenchimentos prévios.
+- **Extração do Aprendizado / Takeaway**: O campo "Cena / Direção Visual" foi contextualizado para "Extração do Aprendizado (Takeaway & Fixação Prática)" nos cards do Canvas e no Modo Ultrafoco, alinhando-se à metodologia de ensino ativo.
+- **Lentes Didáticas de Síntese Cruzada**: As lentes criativas foram totalmente adaptadas para a didática de masterclasses:
+  1. `Gancho Didático & Dor Real (3 min)`
+  2. `Exemplo Prático & Analogia Concreta`
+  3. `Desmistificação & Objeção do Aluno`
+  4. `Modelo Mental & Conexão de Conceitos`
+  5. `Trilha Pedagógica & Pré-Requisitos`
+  6. `Advogado do Diabo & Aluno Cético` (mantendo o rigor crítico para desmontar furos didáticos e premissas frágeis).
+
+---
+
 ## [0.1.5] - 2026-11-03
 
 ### 🎓 Novo Formato: Aula / Masterclass Didática
